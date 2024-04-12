@@ -13,3 +13,5 @@ https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-t
 How to serialize objects into JSON and back again: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to
 
 File dialog: https://stackoverflow.com/questions/3283423/how-to-add-a-browse-to-file-dialog-to-a-vb-net-application
+
+Current application directory path: https://learn.microsoft.com/en-us/answers/questions/211521/current-application-directory-name-without-full-pa
