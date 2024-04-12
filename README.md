@@ -11,3 +11,5 @@ https://learn.microsoft.com/en-us/dotnet/visual-basic/developing-apps/programmin
 https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings?redirectedfrom=MSDN
 
 How to serialize objects into JSON and back again: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to
+
+File dialog: https://stackoverflow.com/questions/3283423/how-to-add-a-browse-to-file-dialog-to-a-vb-net-application
