@@ -16,7 +16,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        db_file_name = "database.ddb"
+        db_file_name = "database.ddb" ' Default to database.ddb when first opened.
 
         If IO.File.Exists(db_file_name) = True Then ' Check to make sure the savings.txt file exists.
             readFile(db_file_name)
@@ -27,7 +27,7 @@ Public Class Form1
         UpdateListBox()
     End Sub
 
-    Private Sub readFile(file_name As String)
+    Private Sub ReadFile(file_name As String)
         reader = New IO.StreamReader(file_name) ' Instantiate a reader object and store it in reader.
         Dim lines As String = reader.ReadLine() ' Store the data read from the file in a variable.
         reader.Close() ' Close the reader
@@ -89,6 +89,32 @@ Public Class Form1
     End Sub
 
     Private Sub NewDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewDatabaseToolStripMenuItem.Click
+        Dim fd As SaveFileDialog = New SaveFileDialog() ' Open the save file dialog, only allow users to save .ddb (Date Database) files
 
+        fd.Title = "Save Database File"
+        fd.InitialDirectory = My.Application.Info.DirectoryPath
+        fd.Filter = "Date Database Files (*.ddb)|*.ddb"
+        fd.FilterIndex = 2
+        fd.RestoreDirectory = True
+
+        If fd.ShowDialog() = DialogResult.OK Then
+            WriteFile(date_list, fd.FileName)
+        End If
+    End Sub
+
+    Private Sub OpenDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDatabaseToolStripMenuItem.Click
+        Dim fd As OpenFileDialog = New OpenFileDialog() ' Open the open file dialog, only allow users to select .ddb (Date Database) files
+
+        fd.Title = "Open Database File"
+        fd.InitialDirectory = My.Application.Info.DirectoryPath
+        fd.Filter = "Date Database Files (*.ddb)|*.ddb"
+        fd.FilterIndex = 2
+        fd.RestoreDirectory = True
+
+        If fd.ShowDialog() = DialogResult.OK Then
+            db_file_name = fd.FileName
+        End If
+        readFile(db_file_name)
+        UpdateListBox()
     End Sub
 End Class

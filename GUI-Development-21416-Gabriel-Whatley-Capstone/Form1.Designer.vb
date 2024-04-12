@@ -25,14 +25,14 @@ Partial Class Form1
         Label1 = New Label()
         MenuStrip1 = New MenuStrip()
         FileToolStripMenuItem = New ToolStripMenuItem()
-        NewDatabaseToolStripMenuItem = New ToolStripMenuItem()
         OpenDatabaseToolStripMenuItem = New ToolStripMenuItem()
+        NewDatabaseToolStripMenuItem = New ToolStripMenuItem()
+        ToolStripSeparator1 = New ToolStripSeparator()
         QuitToolStripMenuItem = New ToolStripMenuItem()
         DatesToolStripMenuItem = New ToolStripMenuItem()
         NewToolStripMenuItem = New ToolStripMenuItem()
         RemoveToolStripMenuItem = New ToolStripMenuItem()
         ListBox1 = New ListBox()
-        ToolStripSeparator1 = New ToolStripSeparator()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -63,17 +63,22 @@ Partial Class Form1
         FileToolStripMenuItem.Size = New Size(37, 20)
         FileToolStripMenuItem.Text = "File"
         ' 
+        ' OpenDatabaseToolStripMenuItem
+        ' 
+        OpenDatabaseToolStripMenuItem.Name = "OpenDatabaseToolStripMenuItem"
+        OpenDatabaseToolStripMenuItem.Size = New Size(180, 22)
+        OpenDatabaseToolStripMenuItem.Text = "Open Database"
+        ' 
         ' NewDatabaseToolStripMenuItem
         ' 
         NewDatabaseToolStripMenuItem.Name = "NewDatabaseToolStripMenuItem"
         NewDatabaseToolStripMenuItem.Size = New Size(180, 22)
         NewDatabaseToolStripMenuItem.Text = "Save As"
         ' 
-        ' OpenDatabaseToolStripMenuItem
+        ' ToolStripSeparator1
         ' 
-        OpenDatabaseToolStripMenuItem.Name = "OpenDatabaseToolStripMenuItem"
-        OpenDatabaseToolStripMenuItem.Size = New Size(180, 22)
-        OpenDatabaseToolStripMenuItem.Text = "Open Database"
+        ToolStripSeparator1.Name = "ToolStripSeparator1"
+        ToolStripSeparator1.Size = New Size(177, 6)
         ' 
         ' QuitToolStripMenuItem
         ' 
@@ -91,13 +96,13 @@ Partial Class Form1
         ' NewToolStripMenuItem
         ' 
         NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        NewToolStripMenuItem.Size = New Size(180, 22)
+        NewToolStripMenuItem.Size = New Size(117, 22)
         NewToolStripMenuItem.Text = "Add"
         ' 
         ' RemoveToolStripMenuItem
         ' 
         RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        RemoveToolStripMenuItem.Size = New Size(180, 22)
+        RemoveToolStripMenuItem.Size = New Size(117, 22)
         RemoveToolStripMenuItem.Text = "Remove"
         ' 
         ' ListBox1
@@ -109,11 +114,6 @@ Partial Class Form1
         ListBox1.Name = "ListBox1"
         ListBox1.Size = New Size(360, 189)
         ListBox1.TabIndex = 7
-        ' 
-        ' ToolStripSeparator1
-        ' 
-        ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(177, 6)
         ' 
         ' Form1
         ' 
