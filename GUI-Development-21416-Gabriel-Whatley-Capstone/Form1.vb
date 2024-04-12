@@ -50,7 +50,7 @@ Public Class Form1
     End Sub
 
     Public Sub RemoveDate(remove_index)
-        date_list.RemoveAt(remove_index) ' Removes the date at the specified index in the date_list
+        date_list.RemoveAt(remove_index) ' Removes the date at the specified index in the date_list.
         UpdateListBox() ' Update the listbox display to reflect the deleted date.
     End Sub
 
@@ -84,12 +84,12 @@ Public Class Form1
     End Sub
 
     Private Sub QuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitToolStripMenuItem.Click
-        WriteFile(date_list, db_file_name) ' Save the DB file before closing
+        WriteFile(date_list, db_file_name) ' Save the DB file before closing.
         Close() ' Shut it down!
     End Sub
 
     Private Sub NewDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewDatabaseToolStripMenuItem.Click
-        Dim fd As SaveFileDialog = New SaveFileDialog() ' Open the save file dialog, only allow users to save .ddb (Date Database) files
+        Dim fd As SaveFileDialog = New SaveFileDialog() ' Open the save file dialog, only allow users to save .ddb (Date Database) files.
 
         fd.Title = "Save Database File"
         fd.InitialDirectory = My.Application.Info.DirectoryPath
@@ -98,12 +98,12 @@ Public Class Form1
         fd.RestoreDirectory = True
 
         If fd.ShowDialog() = DialogResult.OK Then
-            WriteFile(date_list, fd.FileName)
+            WriteFile(date_list, fd.FileName) ' Write the file to the new file name.
         End If
     End Sub
 
     Private Sub OpenDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenDatabaseToolStripMenuItem.Click
-        Dim fd As OpenFileDialog = New OpenFileDialog() ' Open the open file dialog, only allow users to select .ddb (Date Database) files
+        Dim fd As OpenFileDialog = New OpenFileDialog() ' Open the open file dialog, only allow users to select .ddb (Date Database) files.
 
         fd.Title = "Open Database File"
         fd.InitialDirectory = My.Application.Info.DirectoryPath
@@ -114,7 +114,7 @@ Public Class Form1
         If fd.ShowDialog() = DialogResult.OK Then
             db_file_name = fd.FileName
         End If
-        readFile(db_file_name)
-        UpdateListBox()
+        ReadFile(db_file_name) ' Read the newly selected file.
+        UpdateListBox() ' Update the listbox with the contents.
     End Sub
 End Class
