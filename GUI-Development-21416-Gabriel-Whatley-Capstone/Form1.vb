@@ -75,7 +75,7 @@ Public Class Form1
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         If date_list.Count >= 5 Then ' If there are too many dates in the database warn the user that they can't add without deleting.
-            MsgBox("Sorry, there are already 5 dates, you will need to remove one.", "Warning")
+            MsgBox("Sorry, there are already 5 dates, you will need to remove one.", vbOKOnly, "Warning")
             Exit Sub
         End If
         Form2.ShowDialog() ' Show the modal dialog for adding dates.
@@ -83,7 +83,7 @@ Public Class Form1
 
     Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         If date_list.Count <= 0 Then ' If there are no dates in the database warn the user that they cannot delete.
-            MsgBox("Sorry, there aren't any dates to remove, you will need to add one.", "Warning")
+            MsgBox("Sorry, there aren't any dates to remove, you will need to add one.", vbOKOnly, "Warning")
             Exit Sub
         End If
         Form3.ShowDialog() ' Show the modal dialog for removing dates.

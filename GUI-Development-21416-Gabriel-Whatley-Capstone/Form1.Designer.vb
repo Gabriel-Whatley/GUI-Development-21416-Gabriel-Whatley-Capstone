@@ -112,6 +112,7 @@ Partial Class Form1
         ListBox1.ItemHeight = 37
         ListBox1.Location = New Point(40, 120)
         ListBox1.Name = "ListBox1"
+        ListBox1.SelectionMode = SelectionMode.None
         ListBox1.Size = New Size(360, 189)
         ListBox1.TabIndex = 7
         ' 
