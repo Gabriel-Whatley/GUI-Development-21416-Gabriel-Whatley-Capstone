@@ -77,6 +77,7 @@ Partial Class Form3
         Controls.Add(Label1)
         Name = "Form3"
         SizeGripStyle = SizeGripStyle.Hide
+        StartPosition = FormStartPosition.CenterParent
         Text = "Remove a date"
         ResumeLayout(False)
         PerformLayout()

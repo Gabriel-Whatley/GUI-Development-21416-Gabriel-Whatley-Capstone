@@ -40,7 +40,7 @@ Partial Class Form1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(109, 42)
+        Label1.Location = New Point(109, 24)
         Label1.Name = "Label1"
         Label1.Size = New Size(221, 74)
         Label1.TabIndex = 0
@@ -66,24 +66,24 @@ Partial Class Form1
         ' OpenDatabaseToolStripMenuItem
         ' 
         OpenDatabaseToolStripMenuItem.Name = "OpenDatabaseToolStripMenuItem"
-        OpenDatabaseToolStripMenuItem.Size = New Size(180, 22)
+        OpenDatabaseToolStripMenuItem.Size = New Size(154, 22)
         OpenDatabaseToolStripMenuItem.Text = "Open Database"
         ' 
         ' NewDatabaseToolStripMenuItem
         ' 
         NewDatabaseToolStripMenuItem.Name = "NewDatabaseToolStripMenuItem"
-        NewDatabaseToolStripMenuItem.Size = New Size(180, 22)
+        NewDatabaseToolStripMenuItem.Size = New Size(154, 22)
         NewDatabaseToolStripMenuItem.Text = "Save As"
         ' 
         ' ToolStripSeparator1
         ' 
         ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(177, 6)
+        ToolStripSeparator1.Size = New Size(151, 6)
         ' 
         ' QuitToolStripMenuItem
         ' 
         QuitToolStripMenuItem.Name = "QuitToolStripMenuItem"
-        QuitToolStripMenuItem.Size = New Size(180, 22)
+        QuitToolStripMenuItem.Size = New Size(154, 22)
         QuitToolStripMenuItem.Text = "Quit"
         ' 
         ' DatesToolStripMenuItem
@@ -110,7 +110,7 @@ Partial Class Form1
         ListBox1.Font = New Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListBox1.FormattingEnabled = True
         ListBox1.ItemHeight = 37
-        ListBox1.Location = New Point(40, 146)
+        ListBox1.Location = New Point(40, 120)
         ListBox1.Name = "ListBox1"
         ListBox1.Size = New Size(360, 189)
         ListBox1.TabIndex = 7

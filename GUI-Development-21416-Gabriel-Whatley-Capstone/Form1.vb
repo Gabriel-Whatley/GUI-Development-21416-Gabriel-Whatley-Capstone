@@ -3,8 +3,12 @@
 'Class: CPSC 3118 - Graphical User Interface Development - CRN:21416
 'Instructor: Bruce Montgomery
 'Program Description: Capstone program that calculates and displays the number of days between 5 user supplied dates and today's date.
+'I know the UI isn't very attractive but I feel like the effort put into the serializing and file saving functionality is more important
+'to the usefulness of the application.
 
+Imports System.IO
 Imports System.Text.Json
+
 Public Class Form1
 
     Dim writer As System.IO.StreamWriter
@@ -18,13 +22,15 @@ Public Class Form1
 
         db_file_name = "database.ddb" ' Default to database.ddb when first opened.
 
-        If IO.File.Exists(db_file_name) = True Then ' Check to make sure the savings.txt file exists.
-            readFile(db_file_name)
-        Else
-            IO.File.Create(db_file_name) 'Create the DDB file if it doesn't already exist.
+        If IO.File.Exists(db_file_name) = False Then ' Check to make sure the savings.txt file exists.
+            Dim file As FileStream = IO.File.Create(db_file_name) 'Create the DDB file if it doesn't already exist.
+            file.Close() ' Close the newly created file.
+            WriteFile(date_list, db_file_name)
         End If
 
-        UpdateListBox()
+        ReadFile(db_file_name) ' Read the database file on load.
+
+        UpdateListBox() ' Update the list box.
     End Sub
 
     Private Sub ReadFile(file_name As String)
@@ -33,15 +39,15 @@ Public Class Form1
         reader.Close() ' Close the reader
         Try
             date_list = JsonSerializer.Deserialize(Of List(Of Date))(lines) ' Read the entire file into an array split by newline characters.
-        Catch ex As System.ArgumentNullException ' Catch the exception where the database file is empty and JsonSerializer has nothing to serialize.
-            MsgBox("The database file is currently empty. Do not be alarmed.", 1, "Helpful Message") ' Display a helpful and calming message to the user :^)
+        Catch ex As System.ArgumentNullException
+            System.Diagnostics.Debug.WriteLine("Error has occurred: " + ex.ToString) ' If jsonserialiser complains about an empty file ignore it but write to the debug console just in case.
         End Try
     End Sub
 
     Private Sub WriteFile(date_list As List(Of Date), file_name As String)
-        writer = New IO.StreamWriter(file_name)
-        writer.WriteLine(JsonSerializer.Serialize(date_list))
-        writer.Close()
+        writer = New IO.StreamWriter(file_name) ' Create a writer to write the file.
+        writer.WriteLine(JsonSerializer.Serialize(date_list)) ' Serialize the date_list to JSON so it can be written to the file.
+        writer.Close() ' Close the writer when it's done.
     End Sub
 
     Public Sub AddDate(new_date As Date)
@@ -69,7 +75,7 @@ Public Class Form1
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         If date_list.Count >= 5 Then ' If there are too many dates in the database warn the user that they can't add without deleting.
-            MsgBox("Sorry, there are already 5 dates, you will need to remove one.")
+            MsgBox("Sorry, there are already 5 dates, you will need to remove one.", "Warning")
             Exit Sub
         End If
         Form2.ShowDialog() ' Show the modal dialog for adding dates.
@@ -77,7 +83,7 @@ Public Class Form1
 
     Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
         If date_list.Count <= 0 Then ' If there are no dates in the database warn the user that they cannot delete.
-            MsgBox("Sorry, there aren't any dates to remove, you will need to add one.")
+            MsgBox("Sorry, there aren't any dates to remove, you will need to add one.", "Warning")
             Exit Sub
         End If
         Form3.ShowDialog() ' Show the modal dialog for removing dates.
@@ -94,7 +100,6 @@ Public Class Form1
         fd.Title = "Save Database File"
         fd.InitialDirectory = My.Application.Info.DirectoryPath
         fd.Filter = "Date Database Files (*.ddb)|*.ddb"
-        fd.FilterIndex = 2
         fd.RestoreDirectory = True
 
         If fd.ShowDialog() = DialogResult.OK Then
@@ -108,7 +113,6 @@ Public Class Form1
         fd.Title = "Open Database File"
         fd.InitialDirectory = My.Application.Info.DirectoryPath
         fd.Filter = "Date Database Files (*.ddb)|*.ddb"
-        fd.FilterIndex = 2
         fd.RestoreDirectory = True
 
         If fd.ShowDialog() = DialogResult.OK Then
